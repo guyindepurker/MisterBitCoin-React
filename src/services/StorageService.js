@@ -1,4 +1,3 @@
-'use strict';
 export const storageService = {
     save,
     load,

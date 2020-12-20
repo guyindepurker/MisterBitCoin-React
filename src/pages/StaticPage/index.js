@@ -1,1 +1,1 @@
-export { default } from './StaticPage'
+export { StaticPage } from './StaticPage'

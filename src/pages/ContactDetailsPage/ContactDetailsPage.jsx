@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 
 import './ContactDetailsPage.scss'
 
-class ContactDetailsPage extends Component {
+export class ContactDetailsPage extends Component {
     state={
         contact:null
     }
    async componentDidMount(){
-        const contact = await contactService.getContactById(this.props.contactId) 
+        const contact = await contactService.getContactById(this.props.match.params.id) 
         this.setState({contact})
     }
     render() {
@@ -19,10 +19,11 @@ class ContactDetailsPage extends Component {
              <h2>{contact.name} </h2>  
             <h3>{contact.phone}</h3>
             <h3>{contact.email}</h3>
-            <button onClick={this.props.goBack}>Go Back</button>
+            <button onClick={()=>this.props.history.goBack()}>Go Back</button>
+            <button onClick={()=>this.props.history.push(`/contact/edit/${contact._id}`)}>Edit</button>
             </section>
             )
     }
 }
 
-export default ContactDetailsPage
+

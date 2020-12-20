@@ -1,16 +1,14 @@
 
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import { contactService } from '../../services/ContactService'
 import ContactList from '../../cmps/ContactList/'
-import ContactDetailsPage from '../ContactDetailsPage/'
 import ContactFilter from '../../cmps/ContactFilter/'
 import './ContactPage.scss'
 
-class ContactPage extends Component {
+export class ContactPage extends Component {
     state = {
         contacts: null,
-        currContact: null,
-        contactId:null,
         filterBy:null
     }
     componentDidMount() {
@@ -22,24 +20,27 @@ class ContactPage extends Component {
             console.log('contacts:', contacts)
         })
     }
-      onSelectContactId=(contactId)=>{
-        this.setState({contactId})
+     removeContact=async(id)=>{
+        await contactService.deleteContact(id)
+        this.loadContacts()
+        console.log('Delete Success');
     }
     setFilter=(filterBy)=>{
         this.setState({filterBy},this.loadContacts)
     }
     render() {
-        const { contacts ,contactId} = this.state
+        const { contacts } = this.state
         if (!contacts) return <div>Loading...</div>
         return (
             <section className="contact-page">
                 <ContactFilter setFilter={this.setFilter} />
-                {!contactId && <ContactList loadContact={this.onSelectContactId} contacts={contacts} />}
-                {contactId && <ContactDetailsPage goBack={()=>this.onSelectContactId(null)} contactId={contactId} />}
+                 <ContactList removeContact={this.removeContact} history={this.props.history} contacts={contacts} />
+                 <Link   to="/contact/edit">Add New Contact + </Link>
+            
             </section>
 
         )
     }
 }
 
-export default ContactPage
+
