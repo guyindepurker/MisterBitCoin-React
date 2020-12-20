@@ -25,7 +25,7 @@ export class HomePage extends Component {
         const {bitcoinRate,user} = this.state
         if(!user) return <div>Loading....</div>
         return (
-            <section className="home-page">
+            <section className="home-page flex column wrap align-center justify-center ">
                 <h1>Hello , {user.name}</h1>
                 <p>You Have Total {user.coins} Coins </p>
                 <h5>The Bitcoin rate of your coins is {user.coins*bitcoinRate}</h5>

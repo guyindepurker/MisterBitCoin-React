@@ -1,1 +1,10 @@
-.staticPage {}
+.static-page {
+    .nav-static{
+        font-size: 20px;
+        .active{
+            color: brown;
+            font-weight: bolder;
+            
+        }
+    }
+}

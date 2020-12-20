@@ -49,8 +49,8 @@ export class StaticPage extends Component {
         return (
             <section className="static-page">
                 <h2>Static Page </h2>
-                <nav className="btn-controls">
-                    <NavLink to="/static">Market</NavLink>
+                <nav className="nav-static flex justify-center">
+                    <NavLink exact to="/static">Market</NavLink>
                     <NavLink to="/static/trance">Trance</NavLink>
                     <NavLink to="/static/avg">Avg Block</NavLink>
                 </nav>
