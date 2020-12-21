@@ -1,3 +1,5 @@
+import { utilService } from './UtilService';
+
 export const contactService = {
   getContacts,
   getContactById,
@@ -5,7 +7,6 @@ export const contactService = {
   saveContact,
   getEmptyContact,
 };
-
 const contacts = [
   {
     _id: '5a56640269f443a5d64b32ca',
@@ -144,7 +145,7 @@ function getContacts(filterBy = null) {
     if (filterBy && filterBy.term) {
       contactsToReturn = filter(filterBy.term);
     }
-    resolve(sort(contactsToReturn));
+    resolve(sort([...contactsToReturn]));
   });
 }
 
@@ -167,6 +168,7 @@ function deleteContact(id) {
 }
 
 function _updateContact(contact) {
+  console.log('update contact');
   return new Promise((resolve, reject) => {
     const index = contacts.findIndex((c) => contact._id === c._id);
     if (index !== -1) {
@@ -177,9 +179,14 @@ function _updateContact(contact) {
 }
 
 function _addContact(contact) {
+  console.log('add contact');
+
   return new Promise((resolve, reject) => {
-    contact._id = _makeId();
+    contact._id = utilService.makeId();
     contacts.push(contact);
+    console.log('contacts service:', contacts)
+    console.log('contacts service length:', contacts.length)
+
     resolve(contact);
   });
 }
@@ -207,12 +214,3 @@ function filter(term) {
   });
 }
 
-function _makeId(length = 10) {
-  var txt = '';
-  var possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return txt;
-}

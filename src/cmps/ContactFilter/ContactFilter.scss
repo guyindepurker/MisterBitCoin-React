@@ -1,1 +1,21 @@
-.contactFilter {}
+.contact-filter {
+    padding: 5px;
+
+    input{
+        padding: 5px;
+        font-size: 20px;
+        border: none;
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px;
+        &:focus{
+            outline: none;
+            background-color: rgba(201, 201, 201, 0.77);
+
+        }
+        &::placeholder{
+            text-transform: capitalize;
+        }
+    }
+    border-bottom: 1px solid gray;
+
+}

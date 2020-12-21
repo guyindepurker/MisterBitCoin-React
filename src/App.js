@@ -1,27 +1,44 @@
 import './styles/_styles.scss';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import  { Component } from 'react'
+
+import { HashRouter as Router, Redirect,Route, Switch } from 'react-router-dom'
 import {AppHeader} from './cmps/AppHeader/';
 import {HomePage} from './pages/HomePage/HomePage';
 import {ContactPage} from './pages/ContactPage/';
 import {ContactDetailsPage} from './pages/ContactDetailsPage';
 import {ContactEdit} from './pages/ContactEdit/';
 import {StaticPage} from './pages/StaticPage/';
-// import BitCoinApp from './pages/BitCoinApp/'
-function App() {
+import { Signup } from './pages/Signup';
+import { connect } from 'react-redux';
+
+class _App extends Component  {
+  render(){
+    const {user} = this.props
+    const PrivateRoute = (props) => {
+      return user ? <Route { ...props } /> : <Redirect to="/signup" />
+    }
   return (
     <div className="App">
       <Router>
         <AppHeader />
         <Switch>
-          <Route path="/contact/edit/:id?" component={ContactEdit} /> 
-          <Route path="/contact/:id" component={ContactDetailsPage} /> 
-          <Route path="/contact" component={ContactPage} /> 
-          <Route path="/static" component={StaticPage} /> 
-          <Route path="/" component={HomePage} /> 
+          <PrivateRoute path="/contact/edit/:id?" component={ContactEdit} /> 
+          <PrivateRoute path="/contact/:id" component={ContactDetailsPage} /> 
+          <PrivateRoute path="/contact" component={ContactPage} /> 
+          <PrivateRoute path="/static" component={StaticPage} /> 
+          <Route path="/signup" component={Signup} />
+          <PrivateRoute path="/" component={HomePage} /> 
         </Switch>
       </Router>
     </div>
   );
 }
 
-export default App;
+}
+function mapStateToProps(state) {
+  return {
+    user: state.userReducer.currUser
+  }
+}
+export const App = connect(mapStateToProps)(_App);
+

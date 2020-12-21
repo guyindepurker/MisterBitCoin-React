@@ -1,13 +1,30 @@
 .app-header-nav {
+    color: rgba(0,0,0,.5);
+    padding: 10px;
+    height: 85px;
+    position: sticky;
+    font-size: 20px;
+    background-color: #fcfcfc;
+    margin-bottom: 50px;
+    .btn-controls{
+        a{
+
+            color: rgba(0,0,0,.5);
+        }
+        >*:not(:last-child){
+            margin-right: 5px;
+        }
+    }
     .active{
         font-weight: bolder;
-        text-decoration: underline;
-        color: brown;
+        color: rgba(0,0,0,.9);
+
 
     }
     .curr-page{
         font-weight: bolder;
-        text-decoration: underline;
+        color: rgb(24, 24, 24);
+
     }
     
 }

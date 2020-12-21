@@ -1,37 +1,50 @@
 
 import React, { Component } from 'react'
-import {userService } from '../../services/UserService'
-import {bitcoinService} from '../../services/BitcoinService'
+import { bitcoinService } from '../../services/BitcoinService'
 import './HomePage.scss'
-
-export class HomePage extends Component {
-    state={
-        user:null,
-        bitcoinRate:null
+import { connect } from 'react-redux';
+import MoveList from '../../cmps/MoveList/MoveList';
+class _HomePage extends Component {
+    state = {
+        bitcoinRate: null
     }
-    componentDidMount(){
-        this.loadUser()
+    componentDidMount() {
+        this.loadRate()
     }
-    loadUser(){
-        const user =  userService.getUser()
-        this.setState({user},()=>this.loadRate(user.coins))
-    }
-    async loadRate(coins){
+    loadRate = async (coins) => {
         const rate = await bitcoinService.getRate(coins)
-        this.setState({bitcoinRate:rate})
+        this.setState({ bitcoinRate: rate })
     }
-    
+    get lastMoves() {
+        const { user } = this.props
+        const lastMoves = user.moves.slice(0, 3)
+        return lastMoves
+    }
+
     render() {
-        const {bitcoinRate,user} = this.state
-        if(!user) return <div>Loading....</div>
+        const { bitcoinRate } = this.state
+        const { user } = this.props
+        if (!bitcoinRate) return <div>
+            <h1>Loading Rate</h1>
+        </div>
         return (
             <section className="home-page flex column wrap align-center justify-center ">
                 <h1>Hello , {user.name}</h1>
-                <p>You Have Total {user.coins} Coins </p>
-                <h5>The Bitcoin rate of your coins is {user.coins*bitcoinRate}</h5>
-                <h5>The Bitcoin rate today is {bitcoinRate/user.coins}</h5>
+                <p className="flex align-center"><img src="./icons/coins.png" /> You Have Total {user.coins} Coins </p>
+                <p><img src="./icons/bitcoin.png" />The Bitcoin rate today is {bitcoinRate}</p>
+                <div className="last-moves">
+                    <MoveList title="Your Last Moves" movesList={this.lastMoves} />
+                </div>
             </section>
         )
     }
 }
 
+
+function mapStateToProps(state) {
+    return {
+        user: state.userReducer.currUser
+    }
+}
+
+export const HomePage = connect(mapStateToProps, null)(_HomePage)

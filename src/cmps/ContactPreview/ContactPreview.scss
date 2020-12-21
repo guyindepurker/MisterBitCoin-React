@@ -1,8 +1,23 @@
-.contactPreview {
+.contact-preview  {
 
-    background-color: cadetblue;
+    background-color: #e0e0e0;
     padding: 10px;
-    border: 1px solid white;
     font-size: 20px;
     margin: 10px;
+    width: 60vw;
+    max-width: 100%;
+    border-radius: 10px;
+   .btn-controls{
+
+       >*:not(:last-child){
+           margin-right: 5px;
+        }
+    }
+    .profile-img{
+        width: 50px;
+        margin: 0 5px;
+    }
+    h3{
+        margin: 0 3px;
+    }
 }

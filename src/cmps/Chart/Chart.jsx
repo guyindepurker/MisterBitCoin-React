@@ -3,7 +3,6 @@ import { Sparklines,SparklinesLine,SparklinesBars } from 'react-sparklines';
 import './Chart.scss'
 
 export default function Chart({data}) {
-    console.log(data);
     return (
         <section className="chart">
         <Sparklines data={data}>

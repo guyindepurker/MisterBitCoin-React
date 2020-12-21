@@ -4,17 +4,26 @@
 }
 
 html {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  color: $natural;
+  color: rgb(70, 70, 70);
 }
 button{
   cursor: pointer;
   outline: none;
   border: none;
+  transition-duration: 0.3s;
+  border-radius: 10px;
+    background-color: rgb(223, 240, 240);
+    padding: 8px 5px;
+    &:hover{
+      color: black;
+      background-color: rgb(211, 233, 234);
+    }
 }
 body {
   font-size: 14px;
-background-color:$mainBgc ;
+background-color:#E5E9EF ;
   height: 100vh;
   font-weight: 400;
   margin: 0;
@@ -35,7 +44,8 @@ img {
 }
 
 h1,h2,h3,h4,h5,h6{
-  margin: 0 0 rem(20px) 0;
+  margin: 0;
+  padding: 0;
 
   font-weight: 400;
 }

@@ -1,6 +1,7 @@
+//@ TO CREATE A NEW CMP USE THIS CODE IN THE COMMEND LINE:
+// node create-component.js --dir "folder-name" --name "cmp-name"
 const fs = require('fs');
 const path = require('path');
-
 const validOptions = {
     name: 'name', 
     n: 'name', 

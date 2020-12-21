@@ -1,3 +1,20 @@
 .home-page {
-    
+    img{
+        width: 30px;
+        margin-right: 5px;
+    }
+    h1{
+        font-weight: bolder;
+    }
+    h5{
+        margin: 0;
+        padding: 0;
+    }
+    >*{
+        display: flex;
+        align-items: center;
+    }
+    .last-moves{
+        margin-top: 20px;
+    }
 }

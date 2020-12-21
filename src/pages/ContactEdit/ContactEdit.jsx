@@ -1,15 +1,18 @@
 
 import React, { Component } from 'react'
 import { contactService } from '../../services/ContactService'
+import { connect } from 'react-redux';
+import { addContact, updateContact, removeContact } from '../../store/actions/contactActions'
 import './ContactEdit.scss'
 
-export class ContactEdit extends Component {
+class _ContactEdit extends Component {
     state = {
         contact: {
             name: '',
             phone: '',
             email: ''
-        }
+        },
+        errMsg: null
     }
     async componentDidMount() {
         const { id } = this.props.match.params
@@ -18,7 +21,7 @@ export class ContactEdit extends Component {
 
     }
     removeContact = async (id) => {
-        await contactService.getContactById(id)
+        await this.props.removeContact(id)
         this.props.history.push('/contact')
     }
     handleChange = ({ target }) => {
@@ -28,13 +31,18 @@ export class ContactEdit extends Component {
     }
     saveContact = async (ev) => {
         ev.preventDefault()
-        await contactService.saveContact({ ...this.state.contact })
+        const { contact } = this.state
+        if (!contact.name || !contact.email || !contact.phone) {
+            return this.setState({ errMsg: 'Please fill up all the above fields' })
+        }
+        if (contact._id) await this.props.updateContact(contact)
+        else await this.props.addContact({...contact})
         this.props.history.push('/contact')
     }
 
     render() {
         const { name, phone, email, _id } = this.state.contact
-        return (<form className="contact-edit flex column align-center" onSubmit={this.saveContact}>
+        return (<form className="contact-edit simple-form " onSubmit={this.saveContact}>
             {_id && <img src={`https://robohash.org/${_id}`} className="img-profile" alt="profile" />}
             <label>Name</label>
             <input autoFocus type="text" name="name" value={name} onChange={this.handleChange} />
@@ -42,16 +50,22 @@ export class ContactEdit extends Component {
             <input type="email" name="email" value={email} onChange={this.handleChange} />
             <label>Phone</label>
             <input type="tel" name="phone" value={phone} onChange={this.handleChange} />
+            <span className="form-errors">{this.state.errMsg}</span>
             <button>Save</button>
             {_id &&
                 <>
                     <button type="remove" onClick={() => this.props.history.goBack()
                     }>Go Back</button>
-                    <button type="delete" onClick={()=>this.removeContact(_id)}>Delete</button>
+                    <button type="delete" onClick={() => this.removeContact(_id)}>Delete</button>
                 </>
             }
         </form>
         )
     }
 }
-
+const mapDispatchToProps = {
+    addContact,
+    updateContact,
+    removeContact
+}
+export const ContactEdit = connect(null, mapDispatchToProps)(_ContactEdit)
