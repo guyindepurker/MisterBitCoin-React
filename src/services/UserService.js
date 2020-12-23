@@ -4,7 +4,8 @@ export const userService = {
   signup,
   addMove,
   getUsers,
-  doLogout
+  doLogout,
+  addCoins
 };
 const USERSDB = 'users_db';
 const LoggedinUser ='LoggedinUser'
@@ -43,7 +44,14 @@ function addMove(contact, amount) {
   _saveUsersToStorage(user)
   return user;
 }
-
+function addCoins(coins) {
+  const user = storageService.load(LoggedinUser)
+  user.coins += coins
+  console.log('user.coins service:', user.coins)
+  storageService.save(LoggedinUser, user);
+  _saveUsersToStorage(user)
+  return user
+}
 function doLogout() {
   storageService.remove(LoggedinUser)
 }

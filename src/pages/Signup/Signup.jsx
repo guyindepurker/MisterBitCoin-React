@@ -3,8 +3,7 @@ import { Component } from 'react'
 import './Signup.scss'
 import { signup } from '../../store/actions/userActions';
 import { connect } from 'react-redux';
-import Converter from '../../cmps/Converter/Converter';
-
+import Converter, { ConvertMoney } from '../../cmps/Converter/Converter';
 class _Signup extends Component {
     state = {
         name: '',
@@ -24,19 +23,7 @@ class _Signup extends Component {
     }
     render() {
         const { name, errMsg } = this.state
-        const ConvertMoney = () => {
-            return (<div className="convert-money flex column align-center">
-                <h1>Already have a wallet? Buy Bitcoin instantly
-                                                                    </h1>
-                <h3>Buy both Bitcoin Cash (BCH) and Bitcoin (BTC) now using a credit or debit card.
-                                                                                                </h3>
-                <div className="convert-money-form flex space-between">
-                    <Converter />
-
-                </div>
-            </div>)
-        }
-        const HeroSection = (props) => {
+        const HeroSection = () => {
             return (<div className="hero-section ">
                 <div className="hero-section-main container flex align-center justify-center">
                     <div className="container-contact-hero  flex align-center column justify-center">
@@ -61,7 +48,7 @@ class _Signup extends Component {
                         <button>Signup</button>
                     </form>
                 </div>
-                <ConvertMoney />
+                <ConvertMoney isShowBtn={false} />
             </section>
         )
     }

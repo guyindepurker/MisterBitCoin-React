@@ -21,3 +21,10 @@ export function doLogout() {
     }
 
 }
+export function addCoins(coins) {
+    console.log('coins add actions:', coins)
+    return dispatch =>{
+      const userUpdated =  userService.addCoins(coins)
+      dispatch({type:'UPDATE_USER',user:userUpdated})
+    }
+}

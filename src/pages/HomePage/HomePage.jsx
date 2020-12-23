@@ -5,7 +5,9 @@ import './HomePage.scss'
 import { connect } from 'react-redux';
 import MoveList from '../../cmps/MoveList/MoveList';
 import ApexChart from '../../cmps/ApexChart/ApexChart';
-import Converter from '../../cmps/Converter/Converter';
+import  { ConvertMoney } from '../../cmps/Converter/Converter';
+
+
 class _HomePage extends Component {
     state = {
         bitcoinRate: null
@@ -45,18 +47,6 @@ class _HomePage extends Component {
         if (!bitcoinRate) return <div>
             <h1>Loading Rate</h1>
         </div>
-          const ConvertMoney = () => {
-            return (<div className="convert-money flex column align-center">
-                <h1> Buy Bitcoin instantly
-                                                                    </h1>
-                <h3>Buy both Bitcoin Cash (BCH) and Bitcoin (BTC) now using a credit or debit card.
-                                                                                                </h3>
-                <div className="convert-money-form flex space-between">
-                    <Converter />
-
-                </div>
-            </div>)
-        }
         return (
             <section className="home-page flex column wrap align-center justify-center ">
                 <div className="user-container-details flex column wrap align-center justify-center">
@@ -77,7 +67,7 @@ class _HomePage extends Component {
                         <MoveList title="Your Last 3 Moves" movesList={this.lastMoves} />
                         <MovesChart />
                     </div>
-                    <ConvertMoney />
+                    <ConvertMoney isShowBtn={true} />
 
                 </div>
             </section>

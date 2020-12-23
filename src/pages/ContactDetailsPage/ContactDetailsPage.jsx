@@ -18,6 +18,12 @@ import MoveList from '../../cmps/MoveList/MoveList';
          const {contact} = this.state
          this.props.addMove(contact,amount)    
     }
+    get movesToShow(){
+      const {user} = this.props
+      const {contact} = this.state
+      const moves = user.moves.filter(move=>move.toId ===contact._id)
+      return moves
+    }
     render() {
         const {contact} = this.state;
         const {user} = this.props
@@ -41,7 +47,7 @@ import MoveList from '../../cmps/MoveList/MoveList';
    
             {user&&<div className="contact-transfer">
             <TransferFund contact={contact} maxCoins={user.coins} onTransferCoins={this.onTransferCoins} />
-            <MoveList title="Your Moves:" movesList={user.moves} />
+            <MoveList title="Your Moves:" movesList={this.movesToShow} />
             </div>}
             </section>
             )

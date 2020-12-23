@@ -5,6 +5,7 @@ import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { store } from './store';
+import * as serviceWorker from './serviceWorker.js';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={ store }>
@@ -13,6 +14,11 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+serviceWorker.register()
+window.addEventListener('beforeinstallprompt',(e)=>{
+  console.log('beforeinstallprompt event start');
+  e.prompt()
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -2,12 +2,14 @@
   "name": "mister-bitcoin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://guyindepurker.github.io/MisterBitCoin-React",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "apexcharts": "^3.23.0",
     "axios": "^0.21.0",
+    "gh-pages": "^2.0.1",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
@@ -25,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
