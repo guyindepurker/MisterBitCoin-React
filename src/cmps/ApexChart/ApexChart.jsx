@@ -10,11 +10,8 @@ class ApexChart extends Component {
         const options ={
             xaxis:{
                 categories: xaxis.map(value=>{
-                    console.log(value,'lala');
                     const date = new Date(value*1000)
-                    console.log('date:', date)
                     let myDate = moment(date).format('MMM DD')
-                    console.log('myDate:', myDate)
                     return myDate
                 }),
                 labels:{rotate:0}

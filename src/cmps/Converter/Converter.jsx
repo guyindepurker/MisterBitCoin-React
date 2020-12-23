@@ -14,20 +14,17 @@ class _Converter extends Component {
     }
     async componentDidMount() {
         const rate = await bitcoinService.getRate()
-        console.log('rate:', rate)
         this.setState({ rate })
     }
     handleChange = ({ target }) => {
         const field = target.name
         const value = +target.value
-        console.log('value:', value)
         this.setState({ [field]: value })
 
     }
     convertMoney = () => {
         const { money, rate } = this.state
         const res = money * rate
-        console.log('res:', res)
         this.setState({ res })
     }
     render() {

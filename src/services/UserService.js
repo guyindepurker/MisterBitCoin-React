@@ -47,7 +47,6 @@ function addMove(contact, amount) {
 function addCoins(coins) {
   const user = storageService.load(LoggedinUser)
   user.coins += coins
-  console.log('user.coins service:', user.coins)
   storageService.save(LoggedinUser, user);
   _saveUsersToStorage(user)
   return user

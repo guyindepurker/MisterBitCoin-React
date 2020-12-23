@@ -4,7 +4,6 @@ const INITIAL_STATE ={
 export function userReducer(state=INITIAL_STATE,action) {
     switch (action.type) {
         case 'SIGNUP':
-       console.log('user in reducer',action.user);
           return {
               ...state,
               currUser:action.user,

@@ -4,7 +4,6 @@ import './ContactPreview.scss'
 export default function ContactPreview({contact,removeContact,history}) {
     function goToEdit(ev,id){
         ev.preventDefault()
-        console.log('id:', id)
         history.push(`/contact/edit/${id}`)
     }
     function remove(ev,id){

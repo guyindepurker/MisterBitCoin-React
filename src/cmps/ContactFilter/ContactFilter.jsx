@@ -14,7 +14,6 @@ export default class ContactFilter extends Component {
         const filed = ev.target.name
         const value = ev.target.value
         this.setState(prevState=>({filterBy:{...prevState.filterBy,[filed]:value}}),()=>{
-            console.log('this.state.filterBy:', this.state.filterBy)
             this.props.setFilter(this.state.filterBy)
         })
     }

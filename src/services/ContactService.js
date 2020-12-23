@@ -139,7 +139,6 @@ function sort(arr) {
 }
 
 function getContacts(filterBy = null) {
-  console.log('filterBy service:', filterBy)
   return new Promise((resolve, reject) => {
     var contactsToReturn = contacts;
     if (filterBy && filterBy.term) {
@@ -168,7 +167,6 @@ function deleteContact(id) {
 }
 
 function _updateContact(contact) {
-  console.log('update contact');
   return new Promise((resolve, reject) => {
     const index = contacts.findIndex((c) => contact._id === c._id);
     if (index !== -1) {
@@ -179,13 +177,10 @@ function _updateContact(contact) {
 }
 
 function _addContact(contact) {
-  console.log('add contact');
 
   return new Promise((resolve, reject) => {
     contact._id = utilService.makeId();
     contacts.push(contact);
-    console.log('contacts service:', contacts)
-    console.log('contacts service length:', contacts.length)
 
     resolve(contact);
   });

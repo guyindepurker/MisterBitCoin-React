@@ -2,13 +2,10 @@ import { userService } from '../../services/UserService';
 export function signup(name) {
     return  dispatch =>{
         const user =  userService.signup(name)
-        console.log('user action:', user)
         dispatch({type:'SIGNUP',user})
     }
 }
 export function addMove(contact,amount) {
-    console.log('amount actions:', amount)
-    console.log('contact actions:', contact)
     return dispatch =>{
         const userUpdated = userService.addMove(contact,amount)
         dispatch({type:'UPDATE_USER',user:userUpdated})
@@ -22,7 +19,6 @@ export function doLogout() {
 
 }
 export function addCoins(coins) {
-    console.log('coins add actions:', coins)
     return dispatch =>{
       const userUpdated =  userService.addCoins(coins)
       dispatch({type:'UPDATE_USER',user:userUpdated})
