@@ -1,3 +1,22 @@
 .contact-details {
+    padding-top: 5rem;
+    height: 100%;
+    img[src*="robohash"]{
+        width: 200px;
+        margin-bottom: 2rem;
+    }
+    .contact-container{
+        height: 520px;
+        margin-right: 12rem;
+        *{
+            letter-spacing: 0.5px;
+            padding: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+    }
+    .contact-transfer{
+        height: 520px;
 
+    }
 }

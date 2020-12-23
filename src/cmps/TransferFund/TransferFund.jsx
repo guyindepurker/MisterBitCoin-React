@@ -27,11 +27,12 @@ class TransferFund extends Component {
             <form className="transfer-fund" onSubmit={this.transferCoins}>
                 <h3 className="title">Transfer coins to {contact.name}</h3>
                 <span className="left-amount">Your left coins: {maxCoins}</span>
-                <br/>
-                <label htmlFor="transfer">Amount <span>{amount}</span></label>
+               <div className="transfer-container flex space-between align-center">
+                <label htmlFor="transfer">Amount <span className="amount-transfar">{amount}</span></label>
                 <input type="range" id="transfer" name="amount" value={amount} onChange={this.handleChange} min="0" max={maxCoins} />
                 <span className="form-errors">{errMsg}</span>
-                <button>Transfer</button>
+                <button className="trade">Transfer</button>
+               </div>
             </form>
         )
     }

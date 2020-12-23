@@ -14,19 +14,12 @@ export function userReducer(state=INITIAL_STATE,action) {
                 ...state,
                 currUser:action.user
             }  
-        case 'ADD_MOVE':
-            console.log(action.move,'reducer move');
+        case 'LOGOUT':
             return{
                 ...state,
-                currUser:{...state.currUser,moves:[...state.currUser.moves,action.move]}
+                currUser:null
             }
-        case 'REDUCE_BALANCE':
-            console.log(action.amount,'reducer amount');
 
-            return {
-                ...state,
-                currUser:{...state.currUser,coins:(state.currUser.coins-action.amount)}
-            } 
         default:
             return state;
     }

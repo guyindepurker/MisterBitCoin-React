@@ -21,7 +21,7 @@ export default class ContactFilter extends Component {
     render() {
         return (
             <section className="contact-filter flex   justify-center">
-                <input type="text" onChange={this.onChangeHandler} name="term" value={this.state.term} placeholder="Search a contact.."/>
+                <input type="text" className="input" onChange={this.onChangeHandler} name="term" value={this.state.term} placeholder="Search a contact.."/>
             </section>
         )
     }

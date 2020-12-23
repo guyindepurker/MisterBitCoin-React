@@ -4,6 +4,7 @@ export const userService = {
   signup,
   addMove,
   getUsers,
+  doLogout
 };
 const USERSDB = 'users_db';
 const LoggedinUser ='LoggedinUser'
@@ -13,21 +14,22 @@ function getUsers() {
   return gUsers;
 }
 function signup(name) {
-  const user = {
-    _id: utilService.makeId(),
-    name,
-    coins: 100,
-    moves: [],
-  };
-  gUsers.push(user);
-  storageService.save(USERSDB, gUsers);
-  console.log('user service sign up:', user);
+  let user = _handleLogin(name)
+  if(!user) {
+    user = {
+      _id: utilService.makeId(),
+      name,
+      coins: 100,
+      moves: [],
+    };
+    gUsers.push(user);
+    _saveUsersToStorage()
+  }
   storageService.save(LoggedinUser, user);
   return user;
 }
 function addMove(contact, amount) {
   const user = storageService.load(LoggedinUser);
-  console.log('user before move:', user)
   const move = {
     _id: utilService.makeId(),
     toId: contact._id,
@@ -35,30 +37,35 @@ function addMove(contact, amount) {
     at: Date.now(),
     amount,
   };
-  console.log('move service:', move)
-
   user.coins -= amount;
   user.moves.unshift(move);
-  console.log('user after move:', user)
   storageService.save(LoggedinUser, user);
-  storageService.save(USERSDB, gUsers);
+  _saveUsersToStorage(user)
   return user;
 }
 
-function getById(userId) {
-  const user = gUsers.find((currUser) => currUser._id === userId);
-  return user;
+function doLogout() {
+  storageService.remove(LoggedinUser)
+}
+
+function _handleLogin(name) {
+  const user = gUsers.find(gUser => gUser.name === name)
+  const res  = user ? user : null
+  return res
+}
+function _saveUsersToStorage(user=null) {
+  if(user){
+    const idx = gUsers.findIndex(gUser=>gUser._id===user._id)
+    gUsers.splice(idx,1,user)
+  }
+  storageService.save(USERSDB, gUsers);
+  
 }
 
 (function _loadUsers() {
   let users = storageService.load(USERSDB);
-  if (!users || !users.length) {
+  if (!users) {
     users = [];
-    users.push({
-      name: 'Ochoa Hyde',
-      coins: 100,
-      moves: [],
-    });
     storageService.save(USERSDB, users);
   }
   gUsers = users;

@@ -1,6 +1,21 @@
 .transfer-fund {
     background-color: aliceblue;
-    padding: 14px;
+    padding: 20px;
     border-radius: 10px;
     margin: 10px 0;
+    min-width: 310px;
+    font-size: 20px;
+    >*:not(:last-child){
+        margin-bottom: 15px;
+    }
+    .transfer-container{
+        margin-top:10px ;
+        .amount-transfar{
+            color: rgb(1 ,154, 1);
+            font-weight: 800;
+        }
+
+    }
+ 
+
 }

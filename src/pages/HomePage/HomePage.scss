@@ -1,14 +1,51 @@
 .home-page {
+    .user-container-details {
+        color: white;
+        letter-spacing: 1px;
+    background-image: linear-gradient(to right, #1748ce, #1341c5, #0d3bbc, #0734b3, #002eaa);
+
+        // background-color: #274aa7;
+        padding: 50px 0;
+        width: 100%;
+        border-bottom: 1px solid #eeeeeecf;
+        .user-container{
+            margin-bottom: 11px; 
+            .profile-container{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                border: 1px solid #b9b9b9c4;
+                box-shadow: 0px 0 4px 0px #0000008a;
+                background: white;
+                border-radius: 50%;
+                height: 40px;
+                margin-right: 5px;
+                width: 40px;
+            }
+            h1{
+                font-size: 35px;
+               text-transform: capitalize;
+               font-weight: bolder;
+               align-self: flex-end;
+        text-shadow: 1px 1px 0px #3c3e43;
+
+           }
+               }
+    }
     img{
         width: 30px;
         margin-right: 5px;
     }
-    h1{
-        font-weight: bolder;
-    }
+
+
     h5{
         margin: 0;
         padding: 0;
+    }
+    p{
+        margin: 6px 0;
+        letter-spacing: 1px;
+        font-size: 1rem;
     }
     >*{
         display: flex;
@@ -16,5 +53,11 @@
     }
     .last-moves{
         margin-top: 20px;
+        .title-trans{
+            margin-bottom: 9px;
+            font-weight: 800;
+            font-size: 35px;
+            text-shadow: 0px 2px 0px #ffffff;
+        }
     }
 }

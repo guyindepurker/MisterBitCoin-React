@@ -1,1 +1,83 @@
-.signup {}
+.signup-page {
+    h2{
+        margin-bottom: 10px;
+        text-align: center;
+    }
+.signup-form{
+    margin-bottom: 50px;
+    h2{
+        font-size: 35px;
+    }
+    .simple-form{
+
+        width: 300px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        *{
+            margin: 0;
+        }
+ 
+        input{
+            height: fit-content;
+     }
+        button{
+            width: fit-content;
+            align-self: center;
+            font-size: 1rem;
+            margin: 5px;
+         background-color: #05b169;
+     }
+    }}
+
+
+.hero-section{
+    background-image: linear-gradient(to right, #1748ce, #1341c5, #0d3bbc, #0734b3, #002eaa);
+    .hero-section-main{
+        position: relative;
+
+    }
+    color: white;
+    padding: 10rem 0;
+    margin-bottom: 50px ;
+    .title-hero{
+        font-size: 60px;
+    font-weight: 900;
+    text-shadow: 0px 2px #555555;
+    margin-bottom: 15px;
+    }
+    p{
+        padding: 3px;
+        font-size: 18px; 
+    }
+  .hero-pic{
+    width: 317px;
+  }
+  .bottom-img{
+    position: absolute;
+    left: 0;
+    bottom: -136px;
+    width: 200px;
+  }
+  .container-contact-hero{
+    margin-right: 195px;
+  }
+  
+}
+
+}
+.convert-money {
+    margin-top: 20px;
+    width: 100vw;
+    background-color: rgb(19,22,32);
+    padding: 3rem 0;
+    h1{
+        line-height: 1.5;
+        color: white;  
+    }
+    h3{
+        color: rgb(229, 232, 240);
+opacity: 0.6;
+margin-bottom: 8px;
+    }
+}

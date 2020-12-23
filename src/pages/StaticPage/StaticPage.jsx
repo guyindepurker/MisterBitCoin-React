@@ -1,9 +1,8 @@
-import { NavLink, Route,Switch } from 'react-router-dom'
-
+import { NavLink, Route, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
-import Chart from '../../cmps/Chart/'
 import { bitcoinService } from '../../services/BitcoinService'
 import './StaticPage.scss'
+import ApexChart from '../../cmps/ApexChart/ApexChart';
 
 export class StaticPage extends Component {
     state = {
@@ -18,31 +17,42 @@ export class StaticPage extends Component {
     }
     //load the state functions:
     loadMarketPrice = async () => {
-        const marketPrices = await bitcoinService.getMarketPrice()
-        const marketPricesFiltered = marketPrices.values.map(value => value.y).splice(0, 10)
-        this.setState({ marketPrice: marketPricesFiltered })
+        const data = await bitcoinService.getMarketPrice()
+       data.values.slice(0,10)
+        const marketPrice = {
+            xaxis: data.values.map(value => value.x),
+            yaxis: data.values.map(value => value.y)
+        }
+        this.setState({ marketPrice })
     }
     loadAvgBlock = async () => {
-        const avg = await bitcoinService.getAvgBlock()
-        const avgFiltered = avg.values.map(value => Math.floor(value.x / 10000)).splice(0, 10)
-        this.setState({ avgBlock: avgFiltered })
+        const data = await bitcoinService.getAvgBlock()
+       data.values.slice(0,10)
+        const avgBlock = {
+            xaxis: data.values.map(value => value.x),
+            yaxis: data.values.map(value => value.y)
+        }
+        this.setState({ avgBlock })
     }
     loadTrance = async () => {
-        const trance = await bitcoinService.getConfirmedTransactions()
-        const tranceFilter = trance.values.map(value => Math.floor(value.x / 100000)).splice(0, 10)
-        this.setState({ trance: tranceFilter })
+        const data = await bitcoinService.getConfirmedTransactions()
+        data.values.slice(0,10)
+        const trance = {
+            xaxis: data.values.map(value => value.x),
+            yaxis: data.values.map(value => value.y)
+        }
+        this.setState({ trance })
     }
     render() {
         const { marketPrice, avgBlock, trance } = this.state
         const MarketChart = () => {
-            return (<div>
-                <Chart data={marketPrice} /></div>)
+            return ( <ApexChart {...marketPrice} />)
         }
         const AvgChart = () => {
-            return (<div><Chart data={avgBlock} /></div>)
+            return (<ApexChart {...avgBlock} />)
         }
         const TranceChart = () => {
-            return (<div><Chart data={trance} /></div>)
+            return (<ApexChart {...trance} />)
         }
         if (!marketPrice && !avgBlock && !trance) return <div>loading..</div>
         return (
@@ -52,10 +62,11 @@ export class StaticPage extends Component {
                     <NavLink to="/static/trance">Trance</NavLink>
                     <NavLink to="/static/avg">Avg Block</NavLink>
                 </nav>
+                <h1>Bitcoin Statistcs</h1>
                 <Switch>
-                <Route path="/static/trance" component={TranceChart} />
-                <Route path="/static/avg" component={AvgChart} />
-                <Route  path="/static" component={MarketChart} />
+                    <Route path="/static/trance" component={TranceChart} />
+                    <Route path="/static/avg" component={AvgChart} />
+                    <Route path="/static" component={MarketChart} />
                 </Switch>
             </section>
         )

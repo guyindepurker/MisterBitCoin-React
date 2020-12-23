@@ -105,7 +105,7 @@
 
   input:not([type="checkbox"]),
   button {
-    padding: 5px 8px;
+    padding: 8px 15px;
     width: 100%;
   }
 
@@ -115,4 +115,9 @@
     color: rgb(191, 125, 125);
     font-size: 15px;
   }
+}
+   .bolder{
+  font-weight: 700;
+  margin-right: 2px;
+  text-transform: capitalize;
 }

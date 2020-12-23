@@ -7,6 +7,11 @@
     width: 60vw;
     max-width: 100%;
     border-radius: 10px;
+    transition-duration: 0.3s;
+    &:hover{
+        background: aliceblue;
+         color: #817c7c;
+    }
    .btn-controls{
 
        >*:not(:last-child){

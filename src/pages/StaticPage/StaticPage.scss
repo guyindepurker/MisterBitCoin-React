@@ -1,14 +1,32 @@
 .static-page {
     .nav-static{
+        background: #121d33e0;
+        padding: 5px;
         font-size: 20px;
-        >*:not(:last-child){
-            margin-right: 8px;
+        margin-bottom: 60px;
+        text-transform: capitalize;
+        >*{
+            margin: 0px 1rem;
+            padding: 0.5rem 0px 7px;
+            color: rgb(177, 184, 199);
+            &:hover{
+                color: white;
+            }
         }
-        .active{
+        
+            .active{
+            border-bottom: 1px solid rgb(12, 108, 242);
             font-weight: bolder;
-            color: rgba(0,0,0,.9);
-    
-    
+            color: white;
         }
+
+    }
+    h1{
+        text-align: center;
+        margin-bottom: 9px;
+        font-weight: 800;
+        font-size: 35px;
+        color: white;
+        text-shadow: 1px 1px 0px #121d33;
     }
 }

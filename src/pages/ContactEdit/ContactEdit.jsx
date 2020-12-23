@@ -43,21 +43,24 @@ class _ContactEdit extends Component {
     render() {
         const { name, phone, email, _id } = this.state.contact
         return (<form className="contact-edit simple-form " onSubmit={this.saveContact}>
-            {_id && <img src={`https://robohash.org/${_id}`} className="img-profile" alt="profile" />}
-            <label>Name</label>
-            <input autoFocus type="text" name="name" value={name} onChange={this.handleChange} />
-            <label>Email</label>
-            <input type="email" name="email" value={email} onChange={this.handleChange} />
-            <label>Phone</label>
-            <input type="tel" name="phone" value={phone} onChange={this.handleChange} />
+            {!_id&& <h1 className="title-editor">Add new contact</h1>
+            || _id&&<h1 className="title-editor">Edit Details</h1>
+            }
+            {_id && <img src={`https://robohash.org/${_id}?set=set5`} className="img-profile" alt="profile" />}
+            <label>Name:</label>
+            <input autoFocus type="text" className="input input-editor" name="name" value={name} onChange={this.handleChange} />
+            <label>Email:</label>
+            <input type="email" className="input input-editor" name="email" value={email} onChange={this.handleChange} />
+            <label>Phone:</label>
+            <input type="tel" className="input input-editor" name="phone" value={phone} onChange={this.handleChange} />
             <span className="form-errors">{this.state.errMsg}</span>
             <button>Save</button>
             {_id &&
-                <>
+                <div className="action-container flex space-between">
                     <button type="remove" onClick={() => this.props.history.goBack()
                     }>Go Back</button>
                     <button type="delete" onClick={() => this.removeContact(_id)}>Delete</button>
-                </>
+                </div>
             }
         </form>
         )

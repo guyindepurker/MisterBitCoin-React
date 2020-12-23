@@ -12,7 +12,12 @@ export function addMove(contact,amount) {
     return dispatch =>{
         const userUpdated = userService.addMove(contact,amount)
         dispatch({type:'UPDATE_USER',user:userUpdated})
-        // dispatch({type:'REDUCE_BALANCE',amount})
     }
-    
+}
+export function doLogout() {
+    return dispatch =>{
+        userService.doLogout()
+        dispatch({type:'LOGOUT'})
+    }
+
 }

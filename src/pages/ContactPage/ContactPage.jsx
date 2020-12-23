@@ -30,9 +30,9 @@ import './ContactPage.scss'
         if (!contacts) return <div>Loading...</div>
         return (
             <section className="contact-page">
-                <ContactFilter setFilter={this.setFilter} />
+                <ContactFilter  setFilter={this.setFilter} />
                  <ContactList removeContact={this.removeContact} history={this.props.history} contacts={contacts} />
-                 <Link   to="/contact/edit"><img className="img-icon" src="./icons/plus.png" alt="add new" /> </Link>
+                 <Link   to="/contact/edit"><img className="img-icon add-new"  src="./icons/plus.png" alt="add new" /> </Link>
             </section>
 
         )
