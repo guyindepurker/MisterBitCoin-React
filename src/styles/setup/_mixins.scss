@@ -6,7 +6,7 @@
 
 @mixin for-max-narrow-layout {
   // $break-max-narrow: 550px;
-    @media (max-width: $break-max-narrow) {
+    @media (max-width: 500px) {
         @content;
     }
 }

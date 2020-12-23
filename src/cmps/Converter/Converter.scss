@@ -1,9 +1,18 @@
+@import '../../styles/setup/mixins' ;
+
 .converter-main{
 
     .converter {
         margin-bottom: 15px;
         >*{
             margin-right: 5px;
+        }
+        @include for-max-narrow-layout {
+            input{
+                margin: 7px 0;
+                width: 100%;
+                height: 2.5rem;
+            }
         }
     }
     .res-container{

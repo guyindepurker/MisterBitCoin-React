@@ -1,3 +1,5 @@
+@import '../../styles/setup/mixins' ;
+
 .signup-page {
     h2{
         margin-bottom: 10px;
@@ -35,11 +37,17 @@
     background-image: linear-gradient(to right, #1748ce, #1341c5, #0d3bbc, #0734b3, #002eaa);
     .hero-section-main{
         position: relative;
+        @include for-max-narrow-layout {
+            flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        }
 
     }
     color: white;
     padding: 10rem 0;
     margin-bottom: 50px ;
+
     .title-hero{
         font-size: 60px;
     font-weight: 900;
@@ -58,9 +66,20 @@
     left: 0;
     bottom: -136px;
     width: 200px;
+    @include for-max-narrow-layout {
+        display: none;
+    }
+
   }
   .container-contact-hero{
     margin-right: 195px;
+    @include for-max-narrow-layout {
+    margin: 5px;
+    >*{
+        text-align: center;
+    }
+    }
+    
   }
   
 }
@@ -71,6 +90,9 @@
     width: 100vw;
     background-color: rgb(19,22,32);
     padding: 3rem 0;
+    @include for-max-narrow-layout {
+     text-align: center;
+    }
     h1{
         line-height: 1.5;
         color: white;  

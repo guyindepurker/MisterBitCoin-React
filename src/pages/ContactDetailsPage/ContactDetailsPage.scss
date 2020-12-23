@@ -1,6 +1,17 @@
+@import '../../styles/setup/mixins' ;
+
+
 .contact-details {
     padding-top: 5rem;
     height: 100%;
+    @include for-max-narrow-layout{
+        flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding: 0 5px;
+    margin-bottom: 10px;
+    }
     img[src*="robohash"]{
         width: 200px;
         margin-bottom: 2rem;

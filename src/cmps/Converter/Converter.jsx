@@ -32,7 +32,7 @@ class _Converter extends Component {
         const { res, money, rate } = this.state
         return (<div className="converter-main flex column space-around">
 
-            <div className="converter flex space-around">
+            <div className="converter flex wrap space-around">
 
                 <input type="number" className="input" value={money} onChange={this.handleChange} name="money" placeholder="Enter a money in Dollars" />
                 <input className="input" type="text" disabled placeholder="BTC" />

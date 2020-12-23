@@ -62,7 +62,7 @@ class _HomePage extends Component {
                 </div>
                 <div className="last-moves  flex column">
                     <h2 className="title-trans">Your Transfers</h2>
-                    <div className="statics-user flex wrap">
+                    <div className="statics-user flex wrap align-center justify-center">
 
                         <MoveList title="Your Last 3 Moves" movesList={this.lastMoves} />
                         <MovesChart />

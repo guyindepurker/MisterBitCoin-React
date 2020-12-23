@@ -42,7 +42,7 @@ class _Signup extends Component {
                 <HeroSection />
                 <div className="signup-form">
                     <h2>Sign up Or Login to manage your Bitcoin</h2>
-                    <form className="simple-form flex align-center" onSubmit={this.doSignup}>
+                    <form className="simple-form flex wrap align-center" onSubmit={this.doSignup}>
                         <input type="text" name="name" className="input" placeholder="Please enter your name" value={name} onChange={this.handleChange} />
                         <span className="form-errors">{errMsg}</span>
                         <button>Signup</button>
